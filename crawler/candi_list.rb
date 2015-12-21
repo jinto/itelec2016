@@ -11,6 +11,7 @@ require 'net/http'
 # 선관위 호스트
 
 NEC_SERVER= 'info.nec.go.kr'
+PIC_PREFIX= "http://#{NEC_SERVER}"
 
 
 # 이 URL로 전체 후보를 다 가져올수 있다. 
@@ -44,9 +45,15 @@ list_doc.css("table#table01").css("tr").each_with_index do |tr, idx|
   candi_array =  tr.css("td")
   h = {}
   if candi_array.size>0
+    photo = candi_array.at(2).children[1].attribute_nodes[1].to_s
+
+    # 맨 뒤의 파일이름이 후보의 유니크 아이디인 듯.
+    # photo = http://info.nec.go.kr/photo_20160413/Sd1100/Gsg1101/Sgg2110101/Hb100118435/gicho/100118435.jpg
+
+    h[:id]              = photo.scan( /\/gicho\/(.+)\./).first[0].to_s
     h[:district]        = candi_array.at(0).content
     h[:party]           = candi_array.at(1).content
-    h[:picture]         = "http://info.nec.go.kr"+candi_array.at(2).children[1].attribute_nodes[1]
+    h[:picture]         = PIC_PREFIX+candi_array.at(2).children[1].attribute_nodes[1]
     h[:name]            = candi_array.at(3).content.strip 
     h[:gender]          = candi_array.at(4).content.strip
     h[:age]             = candi_array.at(5).content      
