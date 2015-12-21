@@ -18,10 +18,20 @@ NEC_SERVER= 'info.nec.go.kr'
 # 시도코드를 0으로 전송하면 전체 시도의 후보를 가져온다.
 
 # 후보 목록 페이지
-CANDI_LIST= '/electioninfo/electionInfo_report.xhtml?electionId=0020160413&requestURI=%2Felectioninfo%2F0020160413%2Fpc%2Fpcri03_ex.jsp&topMenuId=PC&secondMenuId=PCRI03&menuId=&statementId=PCRI03_%232&electionCode=2&cityCode=0&sggCityCode=0&townCode=-1&sggTownCode=0&x=19&y=14'
+CANDI_LIST= '/electioninfo/electionInfo_report.xhtml'+
+            '?electionId=0020160413'+
+            '&requestURI=%2Felectioninfo%2F0020160413%2Fpc%2Fpcri03_ex.jsp'+
+            '&topMenuId=PC&secondMenuId=PCRI03&menuId='+
+            '&statementId=PCRI03_%232'+
+            '&electionCode=2&cityCode=0&sggCityCode=0'+
+            '&townCode=-1&sggTownCode=0&x=19&y=14'
 
 # 후보 통계 페이지
-CANDI_SUM = '/electioninfo/electionInfo_report.xhtml?electionId=0020160413&requestURI=%2Felectioninfo%2F0020160413%2Fpc%2Fpcri01.jsp&topMenuId=PC&secondMenuId=PCRI01&menuId=&statementId=PCRI01_%232&electionCode=2&cityCode=0&x=37&y=12'
+CANDI_SUM = '/electioninfo/electionInfo_report.xhtml'+
+            '?electionId=0020160413'+
+            '&requestURI=%2Felectioninfo%2F0020160413%2Fpc%2Fpcri01.jsp'+
+            '&topMenuId=PC&secondMenuId=PCRI01&menuId='+
+            '&statementId=PCRI01_%232&electionCode=2&cityCode=0&x=37&y=12'
 
 
 
