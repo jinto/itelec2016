@@ -31,19 +31,20 @@ candi_list  = []
 
 list_doc.css("table#table01").css("tr").each_with_index do |tr, idx|
 
-  candi_array =  tr.css("td").children.to_a
+  candi_array =  tr.css("td")
   h = {}
   if candi_array.size>0
-    h[:district]    = candi_array[0].content
-    h[:party]       = candi_array[1].content
-    h[:picture]     = "http://info.nec.go.kr"+candi_array[3].attribute_nodes[1].value
-    h[:name]        = candi_array[6].content.strip 
-    h[:gender]      = candi_array[8].content.strip
-    h[:age]         = candi_array[9].content      
-    h[:age_num]     = candi_array[11].content    
-    h[:address]     = candi_array[12].content      
-    h[:occupation]  = candi_array[13].content   
-    h[:education]   = candi_array[14].content  
+    h[:district]    = candi_array.at(0).content
+    h[:party]       = candi_array.at(1).content
+    h[:picture]     = "http://info.nec.go.kr"+candi_array.at(2).children[1].attribute_nodes[1]
+    h[:name]        = candi_array.at(3).content.strip 
+    h[:gender]      = candi_array.at(4).content.strip
+    h[:age]         = candi_array.at(5).content      
+    h[:address]     = candi_array.at(6).content      
+    h[:occupation]  = candi_array.at(7).content   
+    h[:education]   = candi_array.at(8).content  
+    h[:career]      = candi_array.at(9).content
+    h[:criminal_record]      = candi_array.at(10).content  
     #h[:raw]        = candi_array
   end
   candi_list << h unless h.empty?
