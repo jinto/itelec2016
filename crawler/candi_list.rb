@@ -70,4 +70,4 @@ end
 
 
 # 출력!
-puts candi_list.to_json
+puts JSON.pretty_generate(candi_list)
