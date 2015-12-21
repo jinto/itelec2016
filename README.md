@@ -12,6 +12,11 @@ http://info.nec.go.kr/main/showDocument.xhtml?electionId=0020160413&topMenuId=PC
 JSON이나 XML로도 제공하시면 가공이 편리합니다.
 
 
+사용법:
+
+    ruby crawler/candi_list.rb > output/candi_list.json
+
+
 # 저작권
 
 선관위의 저작권 페이지는 두개가 있습니다.
