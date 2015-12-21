@@ -8,15 +8,21 @@ require 'json'
 require 'net/http'
 
 
-# 이 코드로 전체 후보를 다 가져올수 있다. 
-# 브라우저에서 보면, 시도코드를 선택하게 되어있지만, 
-# 시도코드를 0으로 전송하면 전체 시도의 후보를 가져온다.
+# 선관위 호스트
 
 NEC_SERVER= 'info.nec.go.kr'
 
+
+# 이 URL로 전체 후보를 다 가져올수 있다. 
+# 브라우저에서 보면, 시도코드를 선택하게 되어있지만, 
+# 시도코드를 0으로 전송하면 전체 시도의 후보를 가져온다.
+
+# 후보 목록 페이지
 CANDI_LIST= '/electioninfo/electionInfo_report.xhtml?electionId=0020160413&requestURI=%2Felectioninfo%2F0020160413%2Fpc%2Fpcri03_ex.jsp&topMenuId=PC&secondMenuId=PCRI03&menuId=&statementId=PCRI03_%232&electionCode=2&cityCode=0&sggCityCode=0&townCode=-1&sggTownCode=0&x=19&y=14'
 
+# 후보 통계 페이지
 CANDI_SUM = '/electioninfo/electionInfo_report.xhtml?electionId=0020160413&requestURI=%2Felectioninfo%2F0020160413%2Fpc%2Fpcri01.jsp&topMenuId=PC&secondMenuId=PCRI01&menuId=&statementId=PCRI01_%232&electionCode=2&cityCode=0&x=37&y=12'
+
 
 
 list_html   = Net::HTTP.get(NEC_SERVER, CANDI_LIST)
@@ -45,7 +51,8 @@ list_doc.css("table#table01").css("tr").each_with_index do |tr, idx|
 end
 
 
-# 통계페이지에서 전체 후보 숫자 가져와서 확인하기
+# 통계페이지에서 전체 후보 숫자 가져와서 검증
+
 sum_html = Net::HTTP.get(NEC_SERVER, CANDI_SUM)
 
 Nokogiri::HTML(sum_html).css("table#table01").css("tr").each_with_index do |tr, idx|
@@ -61,4 +68,5 @@ Nokogiri::HTML(sum_html).css("table#table01").css("tr").each_with_index do |tr, 
 end
 
 
+# 출력!
 puts candi_list.to_json
